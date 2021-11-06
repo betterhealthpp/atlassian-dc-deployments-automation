@@ -22,6 +22,8 @@ export PATH=/usr/local/bin:$PATH
 export PIP_DEFAULT_TIMEOUT=60
 
 pip3 install pipenv
+echo "Workaround: Copy certifi CA certs to system path /usr/lib/python3.7/site-packages/pip/_vendor/certifi/cacert.pem"
+cp /usr/local/lib/python3.7/site-packages/certifi/cacert.pem /usr/lib/python3.7/site-packages/pip/_vendor/certifi/cacert.pem
 echo "Installing ansible and dependencies..."
 PIPENV_NOSPIN=1 PIPENV_HIDE_EMOJIS=1 pipenv sync 2>&1 | iconv -c -f utf-8 -t ascii
 
